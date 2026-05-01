@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trading Tools</title>
+</head>
+<body>
+
+  <h1>Overbought / Oversold</h1>
+
+  <input id="symbol" placeholder="AAPL" />
+  <button onclick="run()">Analyze</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    async function run() {
+      const symbol = document.getElementById("symbol").value;
+
+      const res = await fetch(`/analyze?symbol=${symbol}`);
+      const data = await res.json();
+
+      document.getElementById("output").innerText =
+        JSON.stringify(data, null, 2);
+    }
+  </script>
+
+</body>
+</html>
